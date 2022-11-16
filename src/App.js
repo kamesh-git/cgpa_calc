@@ -1,24 +1,36 @@
-import logo from './logo.svg';
+import { onAuthStateChanged } from 'firebase/auth';
+import {  useState } from 'react';
 import './App.css';
+import useFirebase from './context/useFirebase';
+import Nav_bar from './pages/Nav_bar';
+import Sign from './pages/Sign';
+
 
 function App() {
+
+  const {auth} = useFirebase();
+  const [isSignedIn,setIsSignedIn] = useState(false)
+
+
+
+    onAuthStateChanged(auth,(user) => {
+      if(user){
+        setIsSignedIn(true) 
+      }
+      else{
+        setIsSignedIn(false)
+      }
+    })
+
+
+
+
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      {isSignedIn ? <Nav_bar /> : <Sign /> }
+    </>
   );
 }
 

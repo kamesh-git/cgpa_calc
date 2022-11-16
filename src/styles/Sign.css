@@ -1,0 +1,12 @@
+.container_sign{
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+.redirect{
+    color: grey;
+    cursor: pointer;
+    text-decoration:underline;
+}
