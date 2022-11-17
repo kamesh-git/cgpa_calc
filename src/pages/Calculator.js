@@ -73,8 +73,8 @@ const Calculator = () => {
                 <Table>
                     <tbody>
                         <th></th>
-                        <th>CGPA= {cgpa.tot_cgpa} </th>
-                        <th>Total Credits= {cgpa.tot_credit} </th>
+                        <th><h3>CGPA= {cgpa.tot_cgpa}</h3> </th>
+                        <th><h3>Total Credits= {cgpa.tot_credit}</h3> </th>
                         <tr>
                             <th>ID</th>
                             <th>Name</th>
