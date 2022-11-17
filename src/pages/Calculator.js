@@ -65,7 +65,7 @@ const Calculator = () => {
                         <option key={info.id} value={info.id}>{info.name}</option>
                     ))}
                 </Form.Select>
-                <Form.Label>Enter marks </Form.Label>
+                <Form.Label>Enter Grades </Form.Label>
                 <Form.Control onChange={e => setMarks(e.target.value)} min='0' max='100' required type='number' />
                 <Button style={{ margin: 5 }} variant='dark' type='submit'>ADD</Button>
             </Form>
@@ -78,7 +78,7 @@ const Calculator = () => {
                         <tr>
                             <th>ID</th>
                             <th>Name</th>
-                            <th>Marks</th>
+                            <th>Grades</th>
                             <th>DELETE</th>
                         </tr>
 
@@ -95,7 +95,7 @@ const Calculator = () => {
                 </Table>
 
                 :
-                <b>Enter the marks</b>}
+                <b>Enter the Grades</b>}
         </>
 
 
