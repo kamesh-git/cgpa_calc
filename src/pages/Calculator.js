@@ -43,14 +43,15 @@ const Calculator = () => {
 
 
         }
-        console.log(all_marks, all_credits, total_marks, total_credit)
     }, [sub_inf])
 
 
     const adddoc = (e) => {
         e.preventDefault();
+        var type = "ADD"
+        if(subval === ''){type = ""}
         const snap_doc = subject_info.filter(single_inf => single_inf.id === subval)[0]
-        dispatch({ ...snap_doc, type: "ADD", marks: marks })
+        dispatch({ ...snap_doc, type: type, marks: marks })
     }
 
 
@@ -58,19 +59,22 @@ const Calculator = () => {
         <>
             <Form onSubmit={adddoc}>
                 <Form.Label>Select Subject </Form.Label>
-                <Form.Select onChange={e => setSubval(e.target.value)} aria-label="Default select example">
+                <Form.Select required onChange={e => setSubval(e.target.value)} aria-label="Default select example">
                     <option value={''}>{'Select a subject'}</option>
                     {subject_info.map((info) => (
                         <option key={info.id} value={info.id}>{info.name}</option>
                     ))}
                 </Form.Select>
                 <Form.Label>Enter marks </Form.Label>
-                <Form.Control onChange={e => setMarks(e.target.value)} type='number' />
-                <Button style={{margin:5}} variant='dark' type='submit'>ADD</Button>
+                <Form.Control onChange={e => setMarks(e.target.value)} min='0' max='100' required type='number' />
+                <Button style={{ margin: 5 }} variant='dark' type='submit'>ADD</Button>
             </Form>
             {sub_inf.length ?
                 <Table>
                     <tbody>
+                        <th></th>
+                        <th>CGPA= {cgpa.tot_cgpa} </th>
+                        <th>Total Credits= {cgpa.tot_credit} </th>
                         <tr>
                             <th>ID</th>
                             <th>Name</th>
@@ -87,8 +91,6 @@ const Calculator = () => {
                                 <td><Button onClick={() => dispatch({ id: inf.id, type: "DELETE" })} variant={'danger'}>Delete</Button></td>
                             </tr>
                         ))}
-                        <th>CGPA= {cgpa.tot_cgpa} </th>
-                        <th>Credits= {cgpa.tot_credit} </th>
                     </tbody>
                 </Table>
 

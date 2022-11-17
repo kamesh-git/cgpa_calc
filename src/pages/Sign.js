@@ -41,11 +41,13 @@ const Sign = () => {
 
   }
 
-  const login = () => {
+  const login = (e) => {
+    e.preventDefault()
     signInWithEmailAndPassword(auth, email, password)
   }
 
-  const signup = () => {
+  const signup = (e) => {
+    e.preventDefault()
     createUserWithEmailAndPassword(auth, email, password)
   }
 
@@ -57,7 +59,7 @@ const Sign = () => {
     <>
       {logSign ?
         <Container className='container_sign'>
-          <Form onSubmit={() => login()}>
+          <Form onSubmit={login}>
             <h1>Log in</h1>
             <Form.Group className="mb-3 form" controlId="formBasicEmail">
               <Form.Label>Email address</Form.Label>
@@ -77,7 +79,7 @@ const Sign = () => {
         </Container>
         :
         <Container className='container_sign'>
-          <Form onSubmit={() => signup()}>
+          <Form onSubmit={signup}>
             <h1>Sign up</h1>
             <Form.Group className="mb-3 form" controlId="">
               <Form.Label>Name</Form.Label>
